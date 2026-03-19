@@ -1,29 +1,35 @@
 import { Moon, Sun } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+
+function getInitialTheme(): boolean {
+  try {
+    const stored = localStorage.getItem("theme");
+    if (stored === "light") return false;
+    if (stored === "dark") return true;
+  } catch {}
+  return true; // default dark
+}
 
 const ThemeToggle = () => {
-  const [dark, setDark] = useState(() => {
-    if (typeof window !== "undefined") {
-      return document.documentElement.classList.contains("dark") ||
-        localStorage.getItem("theme") === "dark" ||
-        (!localStorage.getItem("theme") && window.matchMedia("(prefers-color-scheme: dark)").matches);
-    }
-    return true;
-  });
+  const [dark, setDark] = useState(getInitialTheme);
 
   useEffect(() => {
+    const root = document.documentElement;
     if (dark) {
-      document.documentElement.classList.add("dark");
-      localStorage.setItem("theme", "dark");
+      root.classList.add("dark");
     } else {
-      document.documentElement.classList.remove("dark");
-      localStorage.setItem("theme", "light");
+      root.classList.remove("dark");
     }
+    try {
+      localStorage.setItem("theme", dark ? "dark" : "light");
+    } catch {}
   }, [dark]);
+
+  const toggle = useCallback(() => setDark((d) => !d), []);
 
   return (
     <button
-      onClick={() => setDark(!dark)}
+      onClick={toggle}
       className="w-8 h-8 rounded-lg bg-secondary/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
       aria-label="Toggle theme"
     >
