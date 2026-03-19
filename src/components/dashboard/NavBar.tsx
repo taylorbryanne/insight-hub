@@ -1,6 +1,5 @@
 import { BarChart3, Bell, Settings, Menu } from "lucide-react";
 import { useState } from "react";
-import ThemeToggle from "./ThemeToggle";
 
 const tabs = ["Dashboard", "Vessel Intel", "Energy Markets", "Analysis", "News"];
 
@@ -48,7 +47,6 @@ const NavBar = () => {
           {" "}
           {new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
         </span>
-        <ThemeToggle />
         <button className="w-8 h-8 rounded-lg bg-secondary/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors md:hidden">
           <Menu className="w-4 h-4" />
         </button>
