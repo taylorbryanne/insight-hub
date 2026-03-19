@@ -8,6 +8,7 @@ import MiniChart from "@/components/dashboard/MiniChart";
 import VesselTracker from "@/components/dashboard/VesselTracker";
 import EscalationMeter from "@/components/dashboard/EscalationMeter";
 import ImpactGrid from "@/components/dashboard/ImpactGrid";
+import StraitMap from "@/components/dashboard/StraitMap";
 import KeyDevelopments from "@/components/dashboard/KeyDevelopments";
 import { Calendar, Ship, TrendingUp, Fuel } from "lucide-react";
 
@@ -57,6 +58,10 @@ const Index = () => {
 
           <motion.div variants={item}>
             <ImpactGrid />
+          </motion.div>
+
+          <motion.div variants={item}>
+            <StraitMap />
           </motion.div>
 
           <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-5">
