@@ -8,6 +8,7 @@ import MiniChart from "@/components/dashboard/MiniChart";
 import VesselTracker from "@/components/dashboard/VesselTracker";
 import EscalationMeter from "@/components/dashboard/EscalationMeter";
 import ImpactGrid from "@/components/dashboard/ImpactGrid";
+import StraitMap from "@/components/dashboard/StraitMap";
 import KeyDevelopments from "@/components/dashboard/KeyDevelopments";
 import { Calendar, Ship, TrendingUp, Fuel } from "lucide-react";
 
