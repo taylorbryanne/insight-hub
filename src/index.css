@@ -6,6 +6,59 @@
 
 @layer base {
   :root {
+    --background: 210 30% 96%;
+    --foreground: 222 47% 11%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222 47% 11%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222 47% 11%;
+
+    --primary: 38 92% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 215 20% 90%;
+    --secondary-foreground: 222 47% 20%;
+
+    --muted: 215 20% 92%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 200 80% 45%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 142 60% 40%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 222 47% 11%;
+
+    --danger: 0 72% 50%;
+    --danger-foreground: 0 0% 100%;
+
+    --border: 215 20% 85%;
+    --input: 215 20% 85%;
+    --ring: 38 92% 50%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 210 30% 98%;
+    --sidebar-foreground: 222 47% 20%;
+    --sidebar-primary: 38 92% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 215 20% 92%;
+    --sidebar-accent-foreground: 222 47% 20%;
+    --sidebar-border: 215 20% 85%;
+    --sidebar-ring: 38 92% 50%;
+
+    --font-display: 'Inter', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  .dark {
     --background: 222 47% 6%;
     --foreground: 210 40% 92%;
 
@@ -43,8 +96,6 @@
     --input: 220 20% 18%;
     --ring: 38 92% 55%;
 
-    --radius: 0.75rem;
-
     --sidebar-background: 222 41% 8%;
     --sidebar-foreground: 210 40% 85%;
     --sidebar-primary: 38 92% 55%;
@@ -53,9 +104,6 @@
     --sidebar-accent-foreground: 210 40% 85%;
     --sidebar-border: 220 20% 18%;
     --sidebar-ring: 38 92% 55%;
-
-    --font-display: 'Inter', sans-serif;
-    --font-mono: 'JetBrains Mono', monospace;
   }
 }
 

@@ -1,10 +1,24 @@
-import { BarChart3, Bell, Settings, Menu } from "lucide-react";
-import { useState } from "react";
+import { BarChart3, Menu, Sun, Moon } from "lucide-react";
+import { useState, useEffect } from "react";
 
 const tabs = ["Dashboard", "Vessel Intel", "Energy Markets", "Analysis", "News"];
 
 const NavBar = () => {
   const [active, setActive] = useState("Dashboard");
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    return saved ? saved === "dark" : true;
+  });
+
+  useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("theme", "light");
+    }
+  }, [isDark]);
 
   return (
     <nav className="flex items-center justify-between py-3 px-1">
@@ -47,6 +61,13 @@ const NavBar = () => {
           {" "}
           {new Date().toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
         </span>
+        <button
+          onClick={() => setIsDark(!isDark)}
+          className="w-8 h-8 rounded-lg bg-secondary/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors"
+          aria-label="Toggle theme"
+        >
+          {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+        </button>
         <button className="w-8 h-8 rounded-lg bg-secondary/50 flex items-center justify-center text-muted-foreground hover:text-foreground transition-colors md:hidden">
           <Menu className="w-4 h-4" />
         </button>
