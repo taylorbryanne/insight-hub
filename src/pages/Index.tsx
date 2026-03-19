@@ -60,6 +60,10 @@ const Index = () => {
             <ImpactGrid />
           </motion.div>
 
+          <motion.div variants={item}>
+            <StraitMap />
+          </motion.div>
+
           <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <MiniChart title="Oil Prices — Brent ($/bbl)" data={oilData} color="hsl(38, 92%, 55%)" unit="$" />
             <MiniChart title="Daily Vessel Transits" data={transitData} color="hsl(200, 80%, 55%)" />
