@@ -1,5 +1,6 @@
 import { BarChart3, Bell, Settings, Menu } from "lucide-react";
 import { useState } from "react";
+import ThemeToggle from "./ThemeToggle";
 
 const tabs = ["Dashboard", "Vessel Intel", "Energy Markets", "Analysis", "News"];
 
