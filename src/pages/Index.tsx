@@ -1,7 +1,6 @@
 import { motion } from "framer-motion";
 import NavBar from "@/components/dashboard/NavBar";
-import DashboardHeader from "@/components/dashboard/DashboardHeader";
-import StatCard from "@/components/dashboard/StatCard";
+import ImpactStrip from "@/components/dashboard/ImpactStrip";
 import AnalysisSummary from "@/components/dashboard/AnalysisSummary";
 import ScenarioTable from "@/components/dashboard/ScenarioTable";
 import MiniChart from "@/components/dashboard/MiniChart";
@@ -10,7 +9,8 @@ import EscalationMeter from "@/components/dashboard/EscalationMeter";
 import ImpactGrid from "@/components/dashboard/ImpactGrid";
 import StraitMap from "@/components/dashboard/StraitMap";
 import KeyDevelopments from "@/components/dashboard/KeyDevelopments";
-import { Calendar, Ship, TrendingUp, Fuel } from "lucide-react";
+import StatCard from "@/components/dashboard/StatCard";
+import { Ship, Anchor, Navigation } from "lucide-react";
 
 const oilData = [
   { label: "D1", value: 82 }, { label: "D4", value: 85 }, { label: "D7", value: 89 },
@@ -38,17 +38,24 @@ const Index = () => {
       <div className="container max-w-7xl mx-auto px-4 sm:px-6">
         <NavBar />
         <motion.div variants={container} initial="hidden" animate="show" className="space-y-5 pb-12">
+          {/* HERO: Impact Strip — 5 headline KPIs */}
           <motion.div variants={item}>
-            <DashboardHeader />
+            <ImpactStrip />
           </motion.div>
 
-          <motion.div variants={item} className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            <StatCard label="Crisis Duration" value="DAY 19" subtitle="Since Feb 28, 2026" icon={Calendar} />
-            <StatCard label="Vessel Transits" value="2" change="-97%" changeType="down" subtitle="vs 67.1 avg" icon={Ship} />
-            <StatCard label="Oil Price (Brent)" value="$94.40" change="+$12.20" changeType="up" icon={Fuel} />
-            <StatCard label="Insurance Premium" value="2.5%" change="+180bps" changeType="up" icon={TrendingUp} />
+          {/* MAP */}
+          <motion.div variants={item}>
+            <StraitMap />
           </motion.div>
 
+          {/* OPERATIONAL METRICS — below map where they belong */}
+          <motion.div variants={item} className="grid grid-cols-3 gap-4">
+            <StatCard label="Ships in Strait" value="0" subtitle="In strait bounds" icon={Ship} />
+            <StatCard label="Ships Approaching" value="5" subtitle="Speed > 0.5kt, in corridor" icon={Navigation} />
+            <StatCard label="Vessels at Anchor" value="47" subtitle="Speed < 0.5kt" icon={Anchor} />
+          </motion.div>
+
+          {/* ANALYSIS + ESCALATION */}
           <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             <div className="lg:col-span-2">
               <AnalysisSummary />
@@ -56,19 +63,18 @@ const Index = () => {
             <EscalationMeter />
           </motion.div>
 
-          <motion.div variants={item}>
-            <ImpactGrid />
-          </motion.div>
-
-          <motion.div variants={item}>
-            <StraitMap />
-          </motion.div>
-
+          {/* MARKET CHARTS */}
           <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-2 gap-5">
             <MiniChart title="Oil Prices — Brent ($/bbl)" data={oilData} color="hsl(38, 92%, 55%)" unit="$" />
             <MiniChart title="Daily Vessel Transits" data={transitData} color="hsl(200, 80%, 55%)" />
           </motion.div>
 
+          {/* IMPACT GRID */}
+          <motion.div variants={item}>
+            <ImpactGrid />
+          </motion.div>
+
+          {/* SCENARIOS + DEVELOPMENTS */}
           <motion.div variants={item} className="grid grid-cols-1 lg:grid-cols-3 gap-5">
             <div className="lg:col-span-2">
               <ScenarioTable />
@@ -76,6 +82,7 @@ const Index = () => {
             <KeyDevelopments />
           </motion.div>
 
+          {/* VESSEL TRACKER */}
           <motion.div variants={item}>
             <VesselTracker />
           </motion.div>
